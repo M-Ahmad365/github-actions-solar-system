@@ -27,7 +27,13 @@ jobs:
     
         - name: Install Dependencies
           run: npm install
-    
+      
+        - name: Debug Environment Variables
+          run: |
+            node -e 'console.log("URI available:", !!process.env.MONGO_URI)'
+            node -e 'console.log("Username available:", !!process.env.MONGO_USERNAME)'
+            node -e 'console.log("Password available:", !!process.env.MONGO_PASSWORD)'
+        
         - name: Unit Testing
           run: npm test
           
