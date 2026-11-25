@@ -24,7 +24,12 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 20
-    
+        - name: Doing Cache
+          uses: actions/cache@v6.0.0
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          
         - name: Install Dependencies
           run: npm install
       
